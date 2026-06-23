@@ -295,6 +295,12 @@ a [reactive capability curve](./additional.md#reactive-capability-curve).
 - [Injection Observability](extensions.md#injection-observability)
 - [Measurements](extensions.md#measurements)
 
+(ground)=
+## Ground
+[![Javadoc](https://img.shields.io/badge/-javadoc-blue.svg)](https://javadoc.io/doc/com.powsybl/powsybl-core/latest/com/powsybl/iidm/network/Ground.html)
+
+A ground is an injection with a single terminal used to represent a connection to the ground (earth) at a node of the network. It is created with the `newGround()` method of a [voltage level](#voltage-level). As an injection, it only carries its connection information (bus or node) and has no specific electrical attribute.
+
 (boundary-line)=
 ## Boundary line
 [![Javadoc](https://img.shields.io/badge/-javadoc-blue.svg)](https://javadoc.io/doc/com.powsybl/powsybl-core/latest/com/powsybl/iidm/network/BoundaryLine.html)
