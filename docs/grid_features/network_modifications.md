@@ -4,6 +4,17 @@ The `powsybl-iidm-modification` module gathers classes and methods used to modif
 Each modification must first be created with the right attributes or parameters and then applied on the network.
 A `NetworkModification` offers a method to check whether or not its application would have an impact on the given network.
 
+All the modifications implement the `NetworkModification` interface and follow the same usage pattern: the modification object is created (directly or through a builder) and then applied on a network with its `apply` method.
+```java
+NetworkModification modification = new LoadModification("load1", false, 100.0, 50.0);
+
+// optionally check whether the modification would change the network
+NetworkModificationImpact impact = modification.hasImpactOnNetwork(network);
+
+// apply the modification
+modification.apply(network);
+```
+
 ## Scaling
 The `com.powsybl.iidm.modification.scalable` package provides the `Scalable` API, used to scale (increase or decrease) the active or reactive power of the injections of a network. A `Scalable` may target a single injection or a group of injections, and offers a `scale` method that applies a power variation and returns the power that was actually applied.
 
@@ -21,6 +32,12 @@ The behaviour of the scaling is controlled by the `ScalingParameters` class:
 - **constant power factor**: whether the scaling should keep the power factor constant (default `false`);
 - **allows generator out of active power limits**: whether generators whose initial `targetP` is outside the `[minP, maxP]` range are allowed (default `false`);
 - **ignored injection ids**: a set of injection IDs to exclude from the scaling.
+
+For example, to increase the active power of a generator by 100 MW:
+```java
+Scalable scalable = Scalable.scalable("generator1");
+double done = scalable.scale(network, 100.0, new ScalingParameters());
+```
 
 ## Topology modifications
 Powsybl provides classes that can be used to easily modify the topology of the network.
@@ -90,6 +107,21 @@ parallel busbar section. To know which busbar sections are parallel, the [`Busba
 is used. The [`ConnectablePosition` extension](../grid_model/extensions.md#connectable-position) will also be
 created for the injection with the given data, unless there are no extensions yet in the voltage level.
 
+For example, to create a new load and connect it to the busbar section `BBS1`:
+```java
+LoadAdder loadAdder = network.getVoltageLevel("VL1").newLoad()
+    .setId("newLoad")
+    .setP0(100.0)
+    .setQ0(50.0);
+new CreateFeederBayBuilder()
+    .withInjectionAdder(loadAdder)
+    .withBusOrBusbarSectionId("BBS1")
+    .withInjectionPositionOrder(10)
+    .withInjectionDirection(ConnectablePosition.Direction.BOTTOM)
+    .build()
+    .apply(network);
+```
+
 #### Create Branch Feeder bays
 This class allows the creation of lines and two-winding transformers.
 It takes as input:
@@ -151,6 +183,16 @@ An open disconnector will be created on every parallel busbar section. To find t
 [`BusbarSectionPosition` extension](../grid_model/extensions.md#busbar-section-position) is used.
 The coupling device can be created between busbar sections that are parallel or not. If the two busbar sections are
 parallel and there are exactly two parallel busbar sections, then no open disconnectors are created.
+
+For example, to create a coupling device between the busbar sections `BBS1` and `BBS2`:
+```java
+new CreateCouplingDeviceBuilder()
+    .withBusOrBusbarSectionId1("BBS1")
+    .withBusOrBusbarSectionId2("BBS2")
+    .withSwitchPrefixId("COUPLER")
+    .build()
+    .apply(network);
+```
 
 #### Create Voltage Level Topology
 This class allows the creation of the topology inside a voltage level if it is meant to be symmetrical.
@@ -250,6 +292,14 @@ as input.
 When applied to the network, the connectable will be removed, as well as all the switches connecting it to busbar sections.
 Note: Busbar sections are not allowed to be removed with this class.
 
+For example, to remove a load and its switches:
+```java
+new RemoveFeederBayBuilder()
+    .withConnectableId("load1")
+    .build()
+    .apply(network);
+```
+
 #### RemoveHvdcLine
 This class should be used to remove a HVDC line.
 The input arguments are:
@@ -324,6 +374,11 @@ Class: `ReplaceTeePointByVoltageLevelOnLine`
 A tripping modification simulates the tripping of a network element, as a protection scheme would do, by isolating it from the rest of the network. When applied, it computes the set of switches to open and terminals to disconnect required to disconnect the targeted element (identified by its ID), then opens those switches and disconnects those terminals. The element itself is not removed from the network.
 
 For elements connected to several voltage levels (lines, two-winding transformers, tie lines, HVDC lines), an optional voltage level ID can be provided to trip only the side connected to that voltage level.
+
+For example, to trip a line on both sides:
+```java
+new LineTripping("line1").apply(network);
+```
 
 ### Battery tripping
 Trips a battery, given its ID. Class: `BatteryTripping`
@@ -493,6 +548,11 @@ If `relativeValue` is set to true, then the new constant active power (`P0`) and
 If `relativeValue` is set to false, then the new constant active power (`P0`) and reactive power (`Q0`) are updated to the new given values.
 
 Class: `LoadModification`
+
+For example, to set the active and reactive power of a load to new values:
+```java
+new LoadModification("load1", false, 100.0, 50.0).apply(network);
+```
 
 #### Percent modification
 This modification is used to add or remove a percentage of the P and Q of the load. The percentage to add or remove for P and Q cannot be less than -100 (in percentage).
