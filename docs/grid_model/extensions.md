@@ -620,6 +620,33 @@ This extension is used for generators with a remote reactive control.
 | targetQ            | double     | MVar | yes      | -             | The targetQ at remote regulating terminal          |
 | regulatingTerminal | `Terminal` | -    | yes      | -             | The regulating terminal                            |
 
+(secondary-voltage-control-extension)=
+## Secondary voltage control
+
+This extension models the secondary voltage control of a network. It is attached to the whole [network](network_subnetwork.md) and holds a list of control zones. Each control zone is made of:
+- a name;
+- a pilot point, defined by a list of busbar section or bus IDs whose voltage is monitored and a target voltage (in kV);
+- a list of control units, each referencing a controlling equipment (by ID) and a flag indicating whether it participates in the control.
+
+Here is how to add a secondary voltage control extension to a network:
+```java
+network.newExtension(SecondaryVoltageControlAdder.class)
+    .newControlZone()
+        .withName("zone1")
+        .newPilotPoint()
+            .withTargetV(400.0)
+            .withBusbarSectionsOrBusesIds(List.of("busbarSectionId"))
+            .add()
+        .newControlUnit()
+            .withId("generatorId")
+            .withParticipate(true)
+            .add()
+        .add()
+    .add();
+```
+
+This extension is provided by the `com.powsybl:powsybl-iidm-extensions` module.
+
 (slack-terminal-extension)=
 ## Slack terminal
 
@@ -641,6 +668,34 @@ SlackTerminal.attach(bus);
 ```
 
 This extension is provided by the `com.powsybl:powsybl-iidm-api` module.
+
+(standby-automaton-extension)=
+## Standby automaton
+
+This extension is attached to a [static VAR compensator](network_subnetwork.md#static-var-compensator) to model a standby automaton. When the static VAR compensator is in standby mode, it behaves as a fixed shunt of susceptance `b0`. The high and low voltage setpoints and thresholds are used by the automaton to adjust the voltage regulation when the monitored voltage leaves the `[lowVoltageThreshold, highVoltageThreshold]` range.
+
+| Attribute | Type | Unit | Required | Default value | Description |
+|-----------|---------|------|----------|---------------|-------------|
+| standby | boolean | - | yes | - | Whether the static VAR compensator is in standby mode |
+| b0 | double | S | yes | - | The susceptance applied when in standby mode |
+| highVoltageSetpoint | double | kV | yes | - | The voltage setpoint used above the high voltage threshold |
+| highVoltageThreshold | double | kV | yes | - | The high voltage threshold |
+| lowVoltageSetpoint | double | kV | yes | - | The voltage setpoint used below the low voltage threshold |
+| lowVoltageThreshold | double | kV | yes | - | The low voltage threshold |
+
+Here is how to add a standby automaton extension to a static VAR compensator:
+```java
+svc.newExtension(StandbyAutomatonAdder.class)
+    .withStandbyStatus(true)
+    .withB0(0.0001)
+    .withHighVoltageSetpoint(400.0)
+    .withHighVoltageThreshold(420.0)
+    .withLowVoltageSetpoint(380.0)
+    .withLowVoltageThreshold(360.0)
+    .add();
+```
+
+This extension is provided by the `com.powsybl:powsybl-iidm-extensions` module.
 
 (substation-position-extension)=
 ## Substation Position
@@ -785,6 +840,27 @@ Here is how to add a voltage per reactive power control extension to a static VA
 ```java
 svc.newExtension(VoltagePerReactivePowerControlAdder.class)
     .withSlope(0.5)
+    .add();
+```
+
+This extension is provided by the `com.powsybl:powsybl-iidm-extensions` module.
+
+(voltage-regulation-extension)=
+## Voltage regulation
+
+This extension is attached to a [battery](network_subnetwork.md#battery) to enable voltage regulation, similarly to a generator. It defines whether the voltage regulation is enabled, the voltage target and the regulating terminal.
+
+| Attribute | Type | Unit | Required | Default value | Description |
+|-----------|------------|------|----------|----------------------|-------------|
+| voltageRegulatorOn | boolean | - | yes | - | Whether the voltage regulation is enabled |
+| targetV | double | kV | - | - | The voltage target |
+| regulatingTerminal | `Terminal` | - | - | the battery terminal | The regulating terminal |
+
+Here is how to add a voltage regulation extension to a battery:
+```java
+battery.newExtension(VoltageRegulationAdder.class)
+    .withVoltageRegulatorOn(true)
+    .withTargetV(400.0)
     .add();
 ```
 
