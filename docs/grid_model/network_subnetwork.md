@@ -1097,7 +1097,7 @@ For more details about working with subnetworks, see [Working with subnetworks](
 ## Busbar section
 
 [![Javadoc](https://img.shields.io/badge/-javadoc-blue.svg)](https://javadoc.io/doc/com.powsybl/powsybl-core/latest/com/powsybl/iidm/network/BusbarSection.html)<br>
-A busbar section is a non impedant element used in a node/breaker substation topology to connect equipment.
+A busbar section is a non impedant element used in a node/breaker substation topology to connect equipment. The voltage magnitude (`V`, in kV) and angle (`Angle`, in degrees) of the bus to which the busbar section belongs are available as attributes, computed by a power flow.
 
 **Available extensions**
 
@@ -1116,7 +1116,10 @@ A switch is a device designed to close or open one or more electric circuits. Th
 - load break switches are capable of breaking currents under normal operating conditions;
 - and disconnectors can only make or break negligible current.
 
-A switch has an attribute to say if it is open or closed.
+A switch has the following attributes:
+- the kind of switch (breaker, disconnector or load break switch);
+- a boolean indicating whether it is open or closed;
+- a `retained` boolean, only meaningful in a node/breaker voltage level, indicating whether the switch is kept in the bus/breaker view of the network. Retained switches are the ones that appear in the bus/breaker topology, the others being collapsed into buses.
 
 **Available extensions**
 
