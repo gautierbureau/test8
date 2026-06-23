@@ -153,7 +153,7 @@ This option defines the path of the [parameters](#parameters) file of the simula
 This option defines the list of extensions to complete the simulation results with additional data. The available extensions are listed in the usage of the command.
 
 ## Simulators
-The available security analysis implementations are described [here](../../simulation/security/implementations.md).
+The available security analysis implementations are described [here](../../simulation/security/index.md#implementations).
 
 ## Contingencies
 Contingencies are provided through `--contingencies-file`. The file is interpreted by the configured `ContingenciesProviderFactory` (see [`componentDefaultConfig`](../configuration/componentDefaultConfig.md)).
