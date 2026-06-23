@@ -1,6 +1,6 @@
 # Export
 
-<span style="color: red">TODO</span>
+PowSyBl supports the export of an IIDM network to the UCTE-DEF format. The exporter converts the network back to a UCTE-DEF file. It expects the network to be compatible with the UCTE-DEF naming convention: with the default naming strategy, the IDs of the network elements must comply with the norm (which is the case for a network initially imported from a UCTE-DEF file).
 
 ## Options
 These properties can be defined in the configuration file in the [import-export-parameters-default-value](../../user/configuration/import-export-parameters-default-value.md#import-export-parameters-default-value) module.

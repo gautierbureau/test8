@@ -1093,10 +1093,6 @@ For more details about working with subnetworks, see [Working with subnetworks](
 [![Javadoc](https://img.shields.io/badge/-javadoc-blue.svg)](https://javadoc.io/doc/com.powsybl/powsybl-core/latest/com/powsybl/iidm/network/BusbarSection.html)<br>
 A busbar section is a non impedant element used in a node/breaker substation topology to connect equipment.
 
-<!---
-<span style="color:red"> TODO</span>
--->
-
 **Available extensions**
 
 - [Busbar Section Position](extensions.md#busbar-section-position)

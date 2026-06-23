@@ -166,8 +166,6 @@ The transformer is created between the real node and the new Y-node, and the X-n
 The only difference with a classic X-node conversion, is that the electrical characteristic are hold by the transformer and set to `0` for the boundary line,
 except for the reactance that is set to $0.05\space\Omega$.
 
-**TODO**: insert a schema
-
 (ucte-phase-regulation-conversion)=
 #### Phase regulation
 If a phase regulation is defined for a transformer, it is converted into a [ratio tap changer](../../grid_model/additional.md#ratio-tap-changer).
