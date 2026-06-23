@@ -18,6 +18,7 @@ plugins-info.md
 run-script.md
 security-analysis.md
 sensitivity-analysis.md
+shortcircuit.md
 ```
 (itools-available-commands)=
 ## Available commands
@@ -38,4 +39,5 @@ The `iTools` script relies on a plugin mechanism: the commands are discovered at
 | [run-script](run-script.md)                                              | Script          | Run a script on top of PowSyBl                                         |
 | [security-analysis](security-analysis.md)                                | Computation     | Run a security analysis                                                |
 | [sensitivity-analysis](sensitivity-analysis.md)                          | Computation     | Run a sensitivity analysis                                             |
+| [shortcircuit](shortcircuit.md)                                          | Computation     | Run a short-circuit analysis                                           |
 
