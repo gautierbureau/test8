@@ -308,7 +308,7 @@ A generation part, at boundary side can also be modeled with a constant active p
 
 Resulting flows at the boundary line terminal all follow the same passive-sign convention, either for the injection part or for the generation part.
 
-Boundary lines are key objects for merging networks. Merging will be described soon [here](TODO).
+Boundary lines are key objects for merging networks. Merging is described in [Working with subnetworks](../grid_features/working_with_subnetworks.md#merging-networks).
 
 **Characteristics**
 

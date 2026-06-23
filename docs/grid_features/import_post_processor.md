@@ -1,5 +1,5 @@
 # Import post-processor
-The import post-processor is a feature that allows to do automatic modifications or simulations, just after a case is converted to an [IIDM](../grid_exchange_formats/iidm/index.md) network. These post-processors rely on the [plugin mechanism]() of PowSyBl meaning that they are discovered at runtime. To enable one or more post-processors, the `postprocessors` property of the `import` module must be defined in the configuration file. Note that if you configure several post-processors, they are executed in the declaration order, like a pipeline:
+The import post-processor is a feature that allows to do automatic modifications or simulations, just after a case is converted to an [IIDM](../grid_exchange_formats/iidm/index.md) network. These post-processors rely on the plugin mechanism of PowSyBl meaning that they are discovered at runtime. To enable one or more post-processors, the `postprocessors` property of the `import` module must be defined in the configuration file. Note that if you configure several post-processors, they are executed in the declaration order, like a pipeline:
 <span style="color: red">TODO: insert a picture
 
 PowSyBl provides 2 different implementations of post-processors:
@@ -8,7 +8,7 @@ PowSyBl provides 2 different implementations of post-processors:
 
 (groovy-post-processor)=
 ## Groovy post-processor
-This post-processor executes a groovy script, loaded from a file. The script can access to the network and the [computation manager]() using the variables `network` and `computationManager`. To use this post-processor, add the `com.powsybl:powsybl-iidm-scripting` dependency to your classpath, and configure both `import` and `groovy-post-processor` modules:
+This post-processor executes a groovy script, loaded from a file. The script can access to the network and the [computation manager](../user/configuration/default-computation-manager.md) using the variables `network` and `computationManager`. To use this post-processor, add the `com.powsybl:powsybl-iidm-scripting` dependency to your classpath, and configure both `import` and `groovy-post-processor` modules:
 
 **YAML configuration:**
 ```yaml
@@ -58,7 +58,7 @@ import:
 </import>
 ```
 
-**Note:** This post-processor relies on the [load flow results completion]() module.
+**Note:** This post-processor relies on the [load flow results completion](../user/configuration/loadflow-results-completion-parameters.md) module.
 
 (geographical-data-import-post-processor)=
 ## Geographical data import post-processor
@@ -96,4 +96,4 @@ geo-json-importer-post-processor:
 The paths to the different files can be absolute paths or paths relative to the directory where your command is launched.
 
 ## Going further
-- [Create a post-processor](): Learn how to implement your own post-processor
+- Create a post-processor: Learn how to implement your own post-processor
