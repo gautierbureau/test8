@@ -754,7 +754,7 @@ This extension is provided by the `com.powsybl:powsybl-cgmes-extensions` module.
 (cgmes-model-import)=
 ### CGMES model
 
-[![Javadoc](https://img.shields.io/badge/-javadoc-blue.svg)](https://javadoc.io/doc/com.powsybl/powsybl-core/latest/com/powsybl/cgmes/conversion/CgmesModelExtension.html)
+[Javadoc](https://javadoc.io/doc/com.powsybl/powsybl-core/latest/com/powsybl/cgmes/conversion/CgmesModelExtension.html)
 
 This extension provides access to the PowSyBl CGMES Network Model implemented with a triplestore.
 
@@ -773,7 +773,7 @@ This extension is provided by the `com.powsybl:powsybl-cgmes-conversion` module.
 (cgmes-conversion-context-import)=
 ### CGMES conversion context
 
-[![Javadoc](https://img.shields.io/badge/-javadoc-blue.svg)](https://javadoc.io/doc/com.powsybl/powsybl-core/latest/com/powsybl/cgmes/conversion/CgmesConversionContextExtension.html)
+[Javadoc](https://javadoc.io/doc/com.powsybl/powsybl-core/latest/com/powsybl/cgmes/conversion/CgmesConversionContextExtension.html)
 
 This extension is useful for external validation of the mapping made between CGMES and IIDM.
 
