@@ -834,6 +834,10 @@ Optional property that defines which naming strategy is used to transform CGMES 
 You can also define a custom naming strategy by implementing the `NamingStrategy` interface on your own project and declare
 a `NamingStrategyProvider` that can be automatically discovered. Then in this parameter, you can specify the name of the provider.
 
+**iidm.import.cgmes.pre-processors**<br>
+Optional property that defines all the CGMES pre-processors which will be activated before import.
+By default, it is an empty list.
+
 **iidm.import.cgmes.post-processors**<br>
 Optional property that defines all the CGMES post-processors which will be activated after import.
 By default, it is an empty list.
