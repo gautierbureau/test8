@@ -11,6 +11,7 @@ default-computation-manager.md
 external-security-analysis-config.md
 geodata.md
 groovy-dsl-contingencies.md
+iidm.md
 import-export-parameters-default-value.md
 limit-violation-default-filter.md
 loadflow-results-completion-parameters.md
@@ -32,6 +33,7 @@ table-formatter.md
 - [geo-json-importer-post-processor](geodata.md)
 - [groovy-dsl-contingencies](groovy-dsl-contingencies.md)
 - [groovy-post-processor](../../grid_features/import_post_processor.md#groovy-post-processor)
+- [iidm](iidm.md)
 - [import-export-parameters-default-value](import-export-parameters-default-value.md)
 - [load-flow](../../simulation/loadflow/configuration.md#implementation)
 - [load-flow-default-parameters](../../simulation/loadflow/configuration.md#parameters)
