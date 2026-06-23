@@ -17,7 +17,7 @@ loadflow-validation.md
 plugins-info.md
 run-script.md
 security-analysis.md
-sensitivity-computation.md
+sensitivity-analysis.md
 ```
 (itools-available-commands)=
 ## Available commands
@@ -37,5 +37,5 @@ The `iTools` script relies on a plugin mechanism: the commands are discovered at
 | [plugins-info](plugins-info.md)                                            | Script          | Print the currently available implementations for each kind of plugin  |
 | [run-script](run-script.md)                                              | Script          | Run a script on top of PowSyBl                                         |
 | [security-analysis](security-analysis.md)                                | Computation     | Run a security analysis                                                |
-| [sensitivity-computation](sensitivity-computation.md)                    | Computation     | Run a sensitivity analysis                                             |
+| [sensitivity-analysis](sensitivity-analysis.md)                          | Computation     | Run a sensitivity analysis                                             |
 
