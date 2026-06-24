@@ -12,6 +12,16 @@ are plugged in at runtime through the [plugin mechanism](index.md#the-plugin-mec
 The user-facing documentation of these computations is in the
 [simulation](../simulation/index.md) section; this page describes how the APIs are built.
 
+```{toctree}
+:hidden:
+simulation/loadflow
+simulation/security-analysis
+simulation/sensitivity-analysis
+simulation/shortcircuit
+simulation/dynamic-simulation
+simulation/dynamic-security-analysis
+```
+
 ## A shared design pattern
 
 All six modules follow the same recurring structure. Understanding it once is enough to

@@ -4,6 +4,20 @@ The **grid exchange formats** layer holds all the importers and exporters that c
 
 User-facing documentation of the supported formats lives in the [grid exchange formats](../grid_exchange_formats/index.md) section; this page focuses on the internal design.
 
+```{toctree}
+:hidden:
+grid-exchange-formats/cgmes
+grid-exchange-formats/ucte
+grid-exchange-formats/psse
+grid-exchange-formats/matpower
+grid-exchange-formats/powerfactory
+grid-exchange-formats/ieee-cdf
+grid-exchange-formats/ampl
+grid-exchange-formats/entsoe-util
+grid-exchange-formats/cim-anonymiser
+grid-exchange-formats/triple-store
+```
+
 ## Common design
 
 Every format module follows the same recipe, built on the plugin mechanism described in the [developer guide](index.md#the-plugin-mechanism-service-provider-interface).
