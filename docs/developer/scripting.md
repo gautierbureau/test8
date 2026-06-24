@@ -10,6 +10,13 @@ The scripting layer lets users drive PowSyBl from [Groovy](https://groovy-lang.o
 
 All of them build on Groovy's compiler customisers and metaclass mechanism, and they are wired together through the same `ServiceLoader`/`@AutoService` plugin mechanism used elsewhere in PowSyBl (see [the plugin mechanism](index.md#the-plugin-mechanism-service-provider-interface)). The DSLs that actually use this infrastructure (contingencies, actions, dynamic simulation, ...) live in their own modules and are out of scope here.
 
+```{toctree}
+:hidden:
+scripting/dsl
+scripting/scripting
+scripting/iidm-scripting
+```
+
 ## The `dsl` module
 
 `dsl` provides the building blocks shared by every PowSyBl Groovy DSL. It contains no DSL of its own; it is a small library mixing Java and Groovy sources.

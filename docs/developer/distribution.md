@@ -7,6 +7,12 @@ The distribution layer turns the many PowSyBl Core modules into a single, self-c
 | `itools-packager` | A Maven plugin (`powsybl-itools-packager-maven-plugin`) that assembles an iTools package and archives it. |
 | `distribution-core` | An aggregation module that lists the jars to ship and invokes the packager to produce the official PowSyBl distribution. |
 
+```{toctree}
+:hidden:
+distribution/itools-packager
+distribution/distribution-core
+```
+
 ## The `itools-packager` module
 
 `itools-packager` is a Maven plugin packaged as `maven-plugin` under the artifact id `powsybl-itools-packager-maven-plugin`. Its single goal builds the on-disk layout of an iTools installation and compresses it.
