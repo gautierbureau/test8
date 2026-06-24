@@ -2,6 +2,20 @@
 
 This guide describes the internal architecture of PowSyBl Core: how the code is organized, the main design patterns, and the extension points used to plug new behaviour into the framework. It is intended for developers who want to understand the codebase or extend it, as a complement to the user-facing documentation of the other sections.
 
+This page gives the overall picture. The following pages detail the design and code structure of each layer:
+
+```{toctree}
+---
+maxdepth: 1
+---
+foundation
+grid-model
+grid-exchange-formats
+simulation
+scripting
+distribution
+```
+
 ## Module organization
 
 PowSyBl Core is a multi-module Maven project. The modules are organized in layers, each layer depending only on the ones below it:
