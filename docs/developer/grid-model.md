@@ -2,6 +2,13 @@
 
 The grid model layer is the heart of PowSyBl Core. It is built around the **IIDM** model (the *iTesla Internal Data Model*), the single in-memory representation of a power network that every importer, exporter and simulation works on. Around it sit the **contingency** model (what can fail) and the **action** model (the remedial actions and operator strategies applied in response). This page describes how these modules are organized and the main design patterns they rely on. For the functional description of the model itself, see the [grid model](../grid_model/index.md) user documentation.
 
+```{toctree}
+:hidden:
+grid-model/iidm
+grid-model/contingency
+grid-model/action
+```
+
 ## The `iidm` module
 
 The `iidm` module is split into several submodules so that the API is cleanly separated from its implementations and from optional features.

@@ -4,6 +4,16 @@ The foundation layer gathers the cross-cutting modules that every other part of 
 
 The modules covered here are `commons`, `math`, `time-series`, `tools`, `computation`, `computation-local` and `config-classic`.
 
+```{toctree}
+:hidden:
+foundation/commons
+foundation/math
+foundation/time-series
+foundation/tools
+foundation/computation
+foundation/config-classic
+```
+
 ## `commons`
 
 `commons` is the lowest-level module and the most widely depended-on. Its code lives under `com.powsybl.commons`, with one sub-package per concern. The root package only holds two very general types: the unchecked `PowsyblException` (the base exception used throughout the project) and the `Versionable` interface.
