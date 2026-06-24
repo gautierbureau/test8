@@ -23,5 +23,6 @@ grid_features/index.md
 simulation/index
 data/index
 user/index.md
+developer/index
 ```
 
