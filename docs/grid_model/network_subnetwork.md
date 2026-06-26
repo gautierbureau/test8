@@ -334,6 +334,7 @@ a [reactive capability curve](./additional.md#reactive-capability-curve).
 - [Measurements](extensions.md#measurements)
 - [Operating Status](extensions.md#operating-status)
 - [Reference Priority](extensions.md#reference-priority)
+- [Voltage Regulation](extensions.md#voltage-regulation)
 
 (boundary-line)=
 ## Boundary line

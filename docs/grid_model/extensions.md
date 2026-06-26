@@ -991,3 +991,25 @@ svc.newExtension(VoltagePerReactivePowerControlAdder.class)
 ```
 
 This extension is provided by the `com.powsybl:powsybl-iidm-extensions` module.
+
+(voltage-regulation-extension)=
+## Voltage regulation
+
+This extension is used to model the voltage regulation of a battery. This extension is attached to a [battery](network_subnetwork.md#battery).
+
+| Attribute          | Type     | Unit | Required | Default value | Description                                                       |
+|--------------------|----------|------|----------|---------------|-------------------------------------------------------------------|
+| VoltageRegulatorOn | boolean  | -    | yes      | -             | Indicates whether the battery regulates voltage or active power   |
+| TargetV            | double   | kV   | no       | -             | The voltage target, used when the voltage regulation is on        |
+| RegulatingTerminal | Terminal | -    | no       | -             | The terminal used for voltage regulation                          |
+
+Here is how to add a voltage regulation extension to a battery:
+```java
+battery.newExtension(VoltageRegulationAdder.class)
+    .withVoltageRegulatorOn(true)
+    .withTargetV(390.0)
+    .withRegulatingTerminal(terminal)
+    .add();
+```
+
+This extension is provided by the `com.powsybl:powsybl-iidm-extensions` module.
