@@ -576,7 +576,6 @@ $$
 - [Branch Observability](extensions.md#branch-observability)
 - [Dynamic Model Info](extensions.md#dynamic-model-info)
 - [Operating Status](extensions.md#operating-status)
-- [CGMES Line Boundary Node](../grid_exchange_formats/cgmes/import.md#cgmes-line-boundary-node)
 - [Discrete Measurements](extensions.md#discrete-measurements)
 - [Identifiable Short-Circuit](extensions.md#identifiable-short-circuit)
 - [Line Fortescue](extensions.md#line-fortescue)
@@ -608,6 +607,7 @@ A tie line is not a connectable. It is just a container of two underlying bounda
 
 **Available extensions**
 - [Branch Observability](extensions.md#branch-observability)
+- [CGMES Line Boundary Node](../grid_exchange_formats/cgmes/import.md#cgmes-line-boundary-node)
 - [Dynamic Model Info](extensions.md#dynamic-model-info)
 - [Operating Status](extensions.md#operating-status)
 
