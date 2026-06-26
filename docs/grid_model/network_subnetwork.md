@@ -860,8 +860,11 @@ An LCC converter station is made with electronic switches that can only be turne
 **Available extensions**
 
 - [Connectable position](extensions.md#connectable-position)
+- [Discrete Measurements](extensions.md#discrete-measurements)
 - [Dynamic Model Info](extensions.md#dynamic-model-info)
+- [Identifiable Short-Circuit](extensions.md#identifiable-short-circuit)
 - [Injection observability](extensions.md#injection-observability)
+- [Measurements](extensions.md#measurements)
 
 
 (vsc-converter-station)=
@@ -895,8 +898,11 @@ A VSC converter station is made with switching devices that can be turned both o
 **Available extensions**
 
 - [Connectable position](extensions.md#connectable-position)
+- [Discrete Measurements](extensions.md#discrete-measurements)
 - [Dynamic Model Info](extensions.md#dynamic-model-info)
+- [Identifiable Short-Circuit](extensions.md#identifiable-short-circuit)
 - [Injection observability](extensions.md#injection-observability)
+- [Measurements](extensions.md#measurements)
 
 ### Detailed DC model
 
