@@ -59,7 +59,11 @@ Configuration properties can also be overridden using system's environment varia
 | UPPER_CAMEL__PROPERTY4=4  | UpperCamel   | property4     |
 | SNAKE_CASE__PROPERTY5=5   | snake_case   | property5     |
 
+This mechanism *replaces* a whole property from outside the configuration file, whatever its format (XML or YAML). To instead *inject* an environment variable inside a value of a YAML file, see [Environment variables inside YAML values](#environment-variables-inside-yaml-values) below.
+
 ### Environment variables inside YAML values
+Unlike the [System's environment variables](#systems-environment-variables) mechanism above, which overrides a whole property from outside the file, the `${VAR}` syntax lets you reference an environment variable *within* a value. It applies only to YAML files.
+
 In a YAML configuration file, values can also reference environment variables using the `${VAR}` syntax. A default value
 can be provided with `${VAR:-default}`, which is used when the variable is not set. A placeholder whose variable is not
 set and which has no default is left unchanged. The substitution is performed while the file is loaded, before values
