@@ -59,6 +59,22 @@ Configuration properties can also be overridden using system's environment varia
 | UPPER_CAMEL__PROPERTY4=4  | UpperCamel   | property4     |
 | SNAKE_CASE__PROPERTY5=5   | snake_case   | property5     |
 
+### Environment variables inside YAML values
+In a YAML configuration file, values can also reference environment variables using the `${VAR}` syntax. A default value
+can be provided with `${VAR:-default}`, which is used when the variable is not set. A placeholder whose variable is not
+set and which has no default is left unchanged. The substitution is performed while the file is loaded, before values
+are parsed, so it applies to every property type (integer, boolean, path, list, ...). To use an environment variable in
+a non-string value, quote it so that YAML keeps it as text:
+
+```yaml
+module1:
+    directory: ${MY_HOME}/data
+    max-iterations: "${MAX_ITERATIONS:-30}"
+```
+
+With `MY_HOME=/opt/powsybl` and `MAX_ITERATIONS` unset, `directory` resolves to `/opt/powsybl/data` and
+`max-iterations` falls back to `30`.
+
 ## Modules
 
 The module list is available [here](modules.md).
