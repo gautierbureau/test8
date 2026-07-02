@@ -79,6 +79,19 @@ module1:
 With `MY_HOME=/opt/powsybl` and `MAX_ITERATIONS` unset, `directory` resolves to `/opt/powsybl/data` and
 `max-iterations` falls back to `30`.
 
+#### Referencing the configuration file location
+In addition to environment variables, the reserved placeholder `${config_dir}` resolves to the absolute path of the
+directory containing the YAML configuration file. It allows resources to be located relatively to the configuration
+file, independently of the working directory. It takes precedence over an environment variable of the same name.
+
+```yaml
+module1:
+    my-resource: ${config_dir}/resources/data.txt
+```
+
+If the configuration file is `/etc/powsybl/config.yml`, then `my-resource` resolves to
+`/etc/powsybl/resources/data.txt`.
+
 ## Modules
 
 The module list is available [here](modules.md).

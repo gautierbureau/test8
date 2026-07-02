@@ -137,4 +137,27 @@ class YamlPlatformConfigTest {
             assertEquals("${NOT_SET}", module1.getStringProperty("unresolved"));
         }
     }
+
+    @Test
+    void testConfigDirSubstitution() throws IOException {
+        try (FileSystem fileSystem = Jimfs.newFileSystem(Configuration.unix())) {
+            Path cfgDir = Files.createDirectories(fileSystem.getPath("/etc/powsybl"));
+            try (Writer writer = Files.newBufferedWriter(cfgDir.resolve("config.yml"), StandardCharsets.UTF_8)) {
+                writer.write(String.join(System.lineSeparator(),
+                        "module1:",
+                        "    resource: ${config_dir}/resources/data.txt",
+                        "    dir: ${config_dir}"));
+            }
+
+            // config_dir is a built-in and takes precedence over an environment variable of the same name
+            Map<String, String> env = Map.of("config_dir", "/should/be/ignored");
+
+            PlatformConfig config = new PlatformConfig(
+                    new YamlModuleConfigRepository(cfgDir.resolve("config.yml"), env), cfgDir);
+            ModuleConfig module1 = config.getOptionalModuleConfig("module1").orElseThrow();
+
+            assertEquals(fileSystem.getPath("/etc/powsybl/resources/data.txt"), module1.getPathProperty("resource"));
+            assertEquals(fileSystem.getPath("/etc/powsybl"), module1.getPathProperty("dir"));
+        }
+    }
 }
